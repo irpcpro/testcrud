@@ -12,8 +12,12 @@ Route::prefix('v1')->namespace('V1')->group(function () {
     });
 
     // private routes
-    Route::middleware('auth:api')->group(function(){
-
+    Route::prefix('product')->middleware('auth:api')->group(function(){
+        Route::post('/', 'ProductAPIController@index');
+        Route::post('/store', 'ProductStoreAPIController@store');
+        Route::post('/update/{product}', 'ProductUpdateAPIController@update');
+        Route::post('/{product}', 'ProductShowAPIController@show');
+        Route::post('/delete/{product}', 'ProductDeleteAPIController@delete');
     });
 
 });

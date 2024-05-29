@@ -4,9 +4,9 @@ namespace App\Http\Controllers\API\V1\Product;
 
 use App\Http\Controllers\Controller;
 
-class ProductDeleteAPIController extends Controller {
+class ProductAPIController extends Controller {
 
-    public function delete(){
+    public function index(){
 
     }
 
