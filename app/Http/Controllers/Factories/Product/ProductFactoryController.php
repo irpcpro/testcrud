@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Http\Controllers\Factories\Product;
+
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\Factories\FactoryConnector;
+use App\Models\Product;
+use Illuminate\Http\Request;
+
+class ProductFactoryController extends Controller {
+
+    public function __construct(
+        private Request $request
+    ){
+    }
+
+    public function index(){
+        // factory connector
+        $response = new FactoryConnector();
+
+        // get products
+        $products = Product::paginate(2);
+
+        // return result
+        $response->setStatus(true);
+        $response->setMessage('products received.');
+        $response->setData($products);
+        return $response;
+    }
+
+}

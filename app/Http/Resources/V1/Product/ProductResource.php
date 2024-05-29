@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Resources\V1\Auth;
+namespace App\Http\Resources\V1\Product;
 
+use App\Http\Resources\V1\User\UserResource;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserRegisterResource extends JsonResource {
+class ProductResource extends JsonResource
+{
 
-    private string $_token;
-
-    public function __construct($resource, $token) {
+    public function __construct(Product $resource){
         parent::__construct($resource);
-        $this->_token = $token;
     }
 
     /**
@@ -23,9 +23,9 @@ class UserRegisterResource extends JsonResource {
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'email' => $this->email,
-            'token' => $this->_token,
-            'created_at' => $this->created_at,
+            'price' => $this->price,
+            'inventory' => $this->inventory,
+            'user' => new UserResource($this->user),
         ];
     }
 }

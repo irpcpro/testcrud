@@ -5,7 +5,7 @@ namespace App\Http\Requests\API\V1\Auth;
 use App\Http\Requests\AppRequest;
 use Illuminate\Validation\Rules\Password;
 
-class RegisterAPIRequest extends AppRequest {
+class AuthRegisterAPIRequest extends AppRequest {
 
     private int $minName = 2;
     private int $maxName = 20;

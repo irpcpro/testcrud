@@ -5,8 +5,8 @@ namespace App\Http\Controllers\API\V1\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Factories\AuthFactory\AuthRegisterFactoryController;
 use App\Http\Controllers\Factories\ResponseFactory\ResponseFactoryController;
-use App\Http\Requests\API\V1\Auth\RegisterAPIRequest;
-use App\Http\Resources\V1\Auth\UserRegisterResource;
+use App\Http\Requests\API\V1\Auth\AuthRegisterAPIRequest;
+use App\Http\Resources\V1\Auth\AuthRegisterResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 
@@ -16,7 +16,7 @@ class AuthRegisterAPIController extends Controller {
         return auth('api')->login($user) ?? null;
     }
 
-    public function register(RegisterAPIRequest $request){
+    public function register(AuthRegisterAPIRequest $request){
         // create user
         $user = (new AuthRegisterFactoryController($request))->register();
 
@@ -46,7 +46,7 @@ class AuthRegisterAPIController extends Controller {
             return response()->json($response->get(), $response->getStatusCode());
         }
 
-        $data = new UserRegisterResource($user->getData(), $_token);
+        $data = new AuthRegisterResource($user->getData(), $_token);
         $response->setData($data->toArray($request));
 
         // return success

@@ -12,8 +12,8 @@ Route::prefix('v1')->namespace('V1')->group(function () {
     });
 
     // private routes
-    Route::prefix('product')->middleware('auth:api')->group(function(){
-        Route::post('/', 'ProductAPIController@index');
+    Route::prefix('product')->middleware('auth:api')->namespace('Product')->group(function(){
+        Route::get('/', 'ProductAPIController@index');
         Route::post('/store', 'ProductStoreAPIController@store');
         Route::post('/update/{product}', 'ProductUpdateAPIController@update');
         Route::post('/{product}', 'ProductShowAPIController@show');
