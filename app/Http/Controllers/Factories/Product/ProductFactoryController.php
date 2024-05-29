@@ -19,7 +19,8 @@ class ProductFactoryController extends Controller {
         $response = new FactoryConnector();
 
         // get products
-        $products = Product::paginate(2);
+//        $products = Product::paginate(2);
+        $products = Product::all();
 
         // return result
         $response->setStatus(true);

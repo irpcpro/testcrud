@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API\V1\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Factories\Product\ProductFactoryController;
 use App\Http\Controllers\Factories\ResponseFactory\ResponseFactoryController;
-use App\Http\Resources\V1\Product\ProductResource;
+use App\Http\Resources\V1\Product\ProductCollection;
 use Illuminate\Http\Request;
 
 class ProductAPIController extends Controller {
@@ -24,8 +24,8 @@ class ProductAPIController extends Controller {
         }
 
         // create resource
-//        $data = new ProductResource($response->getData()); // TODO - fix collection
-        $response->setData($response->getData()->toArray($request));
+        $data = new ProductCollection($response->getData());
+        $response->setData($data);
 
         // return success
         return response()->json($response->get(),$response->getStatusCode());
