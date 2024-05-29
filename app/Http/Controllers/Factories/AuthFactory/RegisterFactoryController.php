@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Factories\FactoryConnector;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use MongoDB\Client;
+use Illuminate\Support\Facades\Log;
 
 class RegisterFactoryController extends Controller {
 
@@ -17,23 +16,34 @@ class RegisterFactoryController extends Controller {
     }
 
     public function register(): FactoryConnector {
-        // create user
-        $user = User::create([
-            'name' => $this->request->validated('name'),
-            'email' => $this->request->validated('email'),
-            'password' => $this->request->validated('password'),
-        ]);
+        $reponse = new FactoryConnector();
+        $status = false;
+        $message = '';
+        $data = [];
 
+        try {
+            // create user
+            $user = User::create([
+                'name' => $this->request->validated('name'),
+                'email' => $this->request->validated('email'),
+                'password' => $this->request->validated('password'),
+            ]);
 
+            // set data to pass through the system
+            $status = true;
+            $message = 'user created.';
+            $data = $user;
+        }catch (\Exception $exception){
+            // set data to pass through the system
+            $message = 'an error occurred while creating user.';
+            Log::error('error on creating user', [$exception->getMessage()]);
+        }
 
-        dd($user);
-
-        // set data to pass through the system
-        $data = new FactoryConnector();
-        $data->setStatus(true);
-        $data->setMessage('user created.');
-        $data->setData($user);
-        return $data;
+        // return result
+        $reponse->setStatus($status);
+        $reponse->setMessage($message);
+        $reponse->setData($data);
+        return $reponse;
     }
 
 }

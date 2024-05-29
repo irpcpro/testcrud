@@ -41,7 +41,6 @@ class Handler extends ExceptionHandler
         }else{
             $message = $this->convertExceptionToArray($e)['message'];
         }
-        dd($e->getStatusCode());
         $error_code = $this->isHttpException($e) ? $e->getStatusCode() : 500;
         $response = new ResponseFactoryController(false, $message, [], $error_code);
         return response()->json($response->get(), $error_code);
