@@ -14,13 +14,12 @@ class ProductFactoryController extends Controller {
     ){
     }
 
-    public function index(){
+    public function index(int $paginate = 10){
         // factory connector
         $response = new FactoryConnector();
 
         // get products
-//        $products = Product::paginate(2);
-        $products = Product::all();
+        $products = Product::simplePaginate($paginate);
 
         // return result
         $response->setStatus(true);

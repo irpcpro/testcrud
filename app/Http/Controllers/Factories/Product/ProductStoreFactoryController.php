@@ -37,7 +37,7 @@ class ProductStoreFactoryController extends Controller {
         }catch (\Exception $exception){
             // set data to pass through the system
             $message = 'error on store product.';
-            Log::error('error on login user', [$exception->getMessage()]);
+            Log::error('error on storing product', [$exception->getMessage()]);
         }
 
         // return result

@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use App\Http\Controllers\Factories\ResponseFactory\ResponseFactoryController;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log;
 use Throwable;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
