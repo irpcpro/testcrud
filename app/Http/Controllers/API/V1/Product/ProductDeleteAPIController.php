@@ -5,11 +5,12 @@ namespace App\Http\Controllers\API\V1\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Factories\Product\ProductDeleteFactoryController;
 use App\Http\Controllers\Factories\ResponseFactory\ResponseFactoryController;
+use App\Http\Requests\API\V1\Products\ProductDeleteAPIRequest;
 use App\Models\Product;
 
 class ProductDeleteAPIController extends Controller {
 
-    public function delete(Product $product){
+    public function delete(Product $product, ProductDeleteAPIRequest $request){
         $delete = (new ProductDeleteFactoryController($product))->delete();
 
         // set response data

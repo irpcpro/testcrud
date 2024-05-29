@@ -2,11 +2,12 @@
 
 namespace App\Http\Requests\API\V1\Products;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\AppRequest;
 
-class ProductUpdateAPIRequest extends FormRequest {
+class ProductUpdateAPIRequest extends AppRequest {
     public function authorize(): bool {
-        return true;
+        $productUserID = $this->route('product')->user_id;
+        return $this->user()->id === $productUserID;
     }
 
     public function rules(): array {

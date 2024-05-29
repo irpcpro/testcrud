@@ -195,7 +195,7 @@
 								"type": "default"
 							}
 						],
-						"url": "{{base_url}}/api/v1/product/6657648b13e0daa072009d91"
+						"url": "{{base_url}}/api/v1/product/6657647d13e0daa072009d84"
 					},
 					"response": []
 				},
@@ -231,6 +231,40 @@
 							}
 						},
 						"url": "{{base_url}}/api/v1/product/6657648113e0daa072009d87"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/v1/order/store"
 					},
 					"response": []
 				}
