@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Factories;
 
-abstract class FactoryConnector {
+class FactoryConnector {
 
     private bool $status;
     private string $message;
