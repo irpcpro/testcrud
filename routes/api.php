@@ -12,12 +12,20 @@ Route::prefix('v1')->namespace('V1')->group(function () {
     });
 
     // private routes
-    Route::prefix('product')->middleware('auth:api')->namespace('Product')->group(function(){
-        Route::get('/', 'ProductAPIController@index');
-        Route::post('/store', 'ProductStoreAPIController@store');
-        Route::put('/{product}', 'ProductUpdateAPIController@update');
-        Route::get('/{product}', 'ProductShowAPIController@show');
-        Route::delete('/{product}', 'ProductDeleteAPIController@delete');
+    Route::middleware('auth:api')->group(function(){
+        // product
+        Route::prefix('product')->namespace('Product')->group(function(){
+            Route::get('/', 'ProductAPIController@index');
+            Route::post('/store', 'ProductStoreAPIController@store');
+            Route::put('/{product}', 'ProductUpdateAPIController@update');
+            Route::get('/{product}', 'ProductShowAPIController@show');
+            Route::delete('/{product}', 'ProductDeleteAPIController@delete');
+        });
+
+        // order
+        Route::prefix('order')->namespace('Order')->group(function(){
+
+        });
     });
 
 });
