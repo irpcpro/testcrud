@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\API\V1\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Factories\AuthFactory\RegisterFactoryController;
+use App\Http\Controllers\Factories\AuthFactory\AuthRegisterFactoryController;
 use App\Http\Controllers\Factories\ResponseFactory\ResponseFactoryController;
 use App\Http\Requests\API\V1\Auth\RegisterAPIRequest;
-use App\Http\Resources\Auth\UserRegisterResource;
+use App\Http\Resources\V1\Auth\UserRegisterResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 
-class RegisterAPIController extends Controller {
+class AuthRegisterAPIController extends Controller {
 
     private function createToken(User $user): string | null {
         return auth('api')->login($user) ?? null;
@@ -18,7 +18,7 @@ class RegisterAPIController extends Controller {
 
     public function register(RegisterAPIRequest $request){
         // create user
-        $user = (new RegisterFactoryController($request))->register();
+        $user = (new AuthRegisterFactoryController($request))->register();
 
         // set response data
         $response = new ResponseFactoryController($user->getStatus(), $user->getMessage(), $user->getData());

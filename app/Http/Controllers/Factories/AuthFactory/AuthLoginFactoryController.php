@@ -7,9 +7,8 @@ use App\Http\Controllers\Factories\FactoryConnector;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
-class LoginFactoryController extends Controller {
+class AuthLoginFactoryController extends Controller {
 
     public function __construct(
         private Request $request

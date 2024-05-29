@@ -7,8 +7,8 @@ Route::prefix('v1')->namespace('V1')->group(function () {
 
     // authentication
     Route::prefix('auth')->namespace('Auth')->group(function () {
-        Route::post('/register', 'RegisterAPIController@register');
-        Route::post('/login', 'LoginAPIController@login');
+        Route::post('/register', 'AuthRegisterAPIController@register');
+        Route::post('/login', 'AuthLoginAPIController@login');
     });
 
     // private routes

@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class RegisterFactoryController extends Controller {
+class AuthRegisterFactoryController extends Controller {
 
     public function __construct(
         private Request $request

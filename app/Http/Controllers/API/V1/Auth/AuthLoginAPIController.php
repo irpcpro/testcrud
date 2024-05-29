@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\API\V1\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Factories\AuthFactory\LoginFactoryController;
+use App\Http\Controllers\Factories\AuthFactory\AuthLoginFactoryController;
 use App\Http\Controllers\Factories\ResponseFactory\ResponseFactoryController;
 use App\Http\Requests\API\V1\Auth\LoginAPIRequest;
-use App\Http\Resources\Auth\UserLoginResource;
+use App\Http\Resources\V1\Auth\UserLoginResource;
 
-class LoginAPIController extends Controller {
+class AuthLoginAPIController extends Controller {
 
     public function login(LoginAPIRequest $request){
         // check user for login
-        $login = (new LoginFactoryController($request))->login();
+        $login = (new AuthLoginFactoryController($request))->login();
 
         // set response data
         $response = new ResponseFactoryController($login->getStatus(), $login->getMessage(), $login->getData());
