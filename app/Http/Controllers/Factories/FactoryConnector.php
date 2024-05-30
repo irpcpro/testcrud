@@ -9,18 +9,21 @@ class FactoryConnector {
     private mixed $data;
 
     /** @param bool $status */
-    public function setStatus(bool $status): void {
+    public function setStatus(bool $status): static {
         $this->status = $status;
+        return $this;
     }
 
     /** @param string $message */
-    public function setMessage(string $message): void {
+    public function setMessage(string $message): static {
         $this->message = $message;
+        return $this;
     }
 
     /** @param mixed $data */
-    public function setData(mixed $data): void {
+    public function setData(mixed $data): static {
         $this->data = $data;
+        return $this;
     }
 
     /** @return bool */

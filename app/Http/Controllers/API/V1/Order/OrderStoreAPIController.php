@@ -11,9 +11,6 @@ use App\Http\Resources\V1\Order\OrderResource;
 class OrderStoreAPIController extends Controller {
 
     public function store(OrderStoreAPIRequest $request){
-
-        dd($request);
-
         $order = (new OrderStoreFactoryController($request))->store();
 
         // set response data

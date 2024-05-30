@@ -13,8 +13,8 @@ class OrderStoreAPIRequest extends AppRequest {
     public function rules(): array {
         $model = new Product();
         return [
-            '*.product_id' => ['required', 'exists:'.$model->getTable().',' . $model->getKeyName()],
-            '*.count' => ['required', 'integer', 'min:1']
+            'orders.*.product_id' => ['required', 'exists:'.$model->getTable().',' . $model->getKeyName()],
+            'orders.*.count' => ['required', 'integer', 'min:1']
         ];
     }
 

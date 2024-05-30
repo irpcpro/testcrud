@@ -7,6 +7,7 @@ use App\Http\Controllers\Factories\Product\ProductFactoryController;
 use App\Http\Controllers\Factories\ResponseFactory\ResponseFactoryController;
 use App\Http\Resources\PaginateResource;
 use App\Http\Resources\V1\Product\ProductCollection;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductAPIController extends Controller {
