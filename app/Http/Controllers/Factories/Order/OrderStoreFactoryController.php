@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Factories\FactoryConnector;
 use App\Http\Requests\API\V1\Order\OrderStoreAPIRequest;
 use App\Http\Resources\V1\Order\OrderStoreFailedResource;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\Product;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -54,6 +56,25 @@ class OrderStoreFactoryController extends Controller {
         });
     }
 
+    private function calculateOrderTotalPrice(): int {
+        return $this->orders->sum(fn($item) => $item['product']->price * $item['count']);
+    }
+
+    private function calculateOrderCount(): int {
+        return $this->orders->sum('count');
+    }
+
+    private function createOrderProductsList(): Collection {
+        return $this->orders->mapWithKeys(function($item) {
+            return [
+                $item['product']->id => [
+                    'count' => $item['count'],
+                    'price' => $item['product']->price,
+                ]
+            ];
+        });
+    }
+
     public function store(){
         // get the products out of request
         $this->convertOrdersToModel();
@@ -62,7 +83,7 @@ class OrderStoreFactoryController extends Controller {
         $response = new FactoryConnector();
         $response->setStatus(false)->setMessage('')->setData('');
 
-        DB::beginTransaction();
+//        DB::beginTransaction();
         try {
             // validations
             $this->validateCountOrders();
@@ -71,8 +92,46 @@ class OrderStoreFactoryController extends Controller {
                 return $response;
             }
 
-            // place the order
-            $order = '';
+            // get the TotalPrice and OrderCount
+            $orderTotalPrice = $this->calculateOrderTotalPrice();
+            $orderCount = $this->calculateOrderCount();
+
+            // create the order
+            $order = Order::create([
+                'user_id' => auth()->user()->id,
+                'count' => $orderCount,
+                'total_price' => $orderTotalPrice,
+            ]);
+
+//            Order::all()->map(fn($item)=>$item->delete()); dd(2);
+
+            $w = [
+                "6657648a13e0daa072009d90" => [
+                    "count" => 8,
+                    "price" => 20000
+                ],
+                "6657648c13e0daa072009d92" => [
+                    "count" => 10,
+                    "price" => 20000
+                ]
+            ];
+
+            // get data and sync the orderProducts
+            $orderProducts = $this->createOrderProductsList();
+
+
+
+//            $order->products()->attach('6657648a13e0daa072009d90', ['count' => 10, 'price' => 20000], false);
+            $order->orderProducts($orderProducts);
+//            $order->products()->attach('6657648c13e0daa072009d92', ['count' => 5, 'price' => 20000], false);
+
+//            dd($orderProducts->keys()->toArray(), $orderProducts->values()->toArray());
+//            $res = $order->products()->sync($orderProducts->toArray());
+
+
+
+            dd('ok');
+
 
             /*
              * TODO - Place the order
@@ -83,10 +142,10 @@ class OrderStoreFactoryController extends Controller {
 
             // ready data and return
             $response->setData($order)->setStatus(true)->setMessage('orders have created.');
-            DB::commit();
+//            DB::commit();
             return $response;
         }catch (\Exception $exception){
-            DB::rollBack();
+//            DB::rollBack();
             // set data to pass through the system
             $response->setMessage('error on store order.')->setData('')->setStatus(false);
             Log::error('error on storing order', [$exception->getMessage()]);

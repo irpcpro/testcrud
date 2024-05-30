@@ -169,7 +169,7 @@
 								"type": "default"
 							}
 						],
-						"url": "{{base_url}}/api/v1/product/6657647e13e0daa072009d85"
+						"url": "{{base_url}}/api/v1/product/6657648313e0daa072009d89"
 					},
 					"response": []
 				},
@@ -263,7 +263,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"product_id\": \"6657648a13e0daa072009d90\",\r\n        \"count\": 4\r\n    },\r\n    {\r\n        \"product_id\": \"6657648c13e0daa072009d92\",\r\n        \"count\": -1\r\n    }\r\n]",
+							"raw": "{\r\n    \"orders\": [\r\n        {\r\n            \"product_id\": \"6657648a13e0daa072009d90\",\r\n            \"count\": 8\r\n            \r\n        }, \r\n        {\r\n            \"product_id\": \"6657648c13e0daa072009d92\",\r\n            \"count\": 10\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
