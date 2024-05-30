@@ -8,6 +8,7 @@ use App\Http\Requests\API\V1\Order\OrderStoreAPIRequest;
 use App\Http\Resources\V1\Order\OrderStoreFailedResource;
 use App\Models\Product;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class OrderStoreFactoryController extends Controller {
@@ -19,6 +20,7 @@ class OrderStoreFactoryController extends Controller {
      * @var int $count
      */
     private Collection $orders;
+    /** @var OrderStoreFailedResource[] $errorCountOrders */
     private array $errorCountOrders = [];
 
     public function __construct(
@@ -44,7 +46,7 @@ class OrderStoreFactoryController extends Controller {
     }
 
     // check the count of purchase
-    private function checkCountOrders(): void{
+    private function validateCountOrders(): void{
         $this->orders->map(function($item){
             if($item['count'] > $item['product']->inventory){
                 $this->errorCountOrders[] = (new OrderStoreFailedResource($item['product']))->toArray($this->request);
@@ -60,9 +62,10 @@ class OrderStoreFactoryController extends Controller {
         $response = new FactoryConnector();
         $response->setStatus(false)->setMessage('')->setData('');
 
+        DB::beginTransaction();
         try {
             // validations
-            $this->checkCountOrders();
+            $this->validateCountOrders();
             if(!empty($this->errorCountOrders)){
                 $response->setMessage('error on products inventories.')->setData($this->errorCountOrders);
                 return $response;
@@ -70,13 +73,20 @@ class OrderStoreFactoryController extends Controller {
 
             // place the order
             $order = '';
-            // make order & product relation  -  an order =>( can have )=> n product !
-            // TODO - Place the order
 
+            /*
+             * TODO - Place the order
+             * inset the orders [make order & product relation  -  an order =>( can have )=> n product !]
+             * update the inventories
+             *
+             * */
 
-            $response->setData('')->setStatus(true)->setMessage('orders have created.');
+            // ready data and return
+            $response->setData($order)->setStatus(true)->setMessage('orders have created.');
+            DB::commit();
             return $response;
         }catch (\Exception $exception){
+            DB::rollBack();
             // set data to pass through the system
             $response->setMessage('error on store order.')->setData('')->setStatus(false);
             Log::error('error on storing order', [$exception->getMessage()]);
