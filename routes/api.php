@@ -24,6 +24,7 @@ Route::prefix('v1')->namespace('V1')->group(function () {
 
         // order
         Route::prefix('order')->namespace('Order')->group(function(){
+            Route::get('/', 'OrderAPIController@index');
             Route::post('/store', 'OrderStoreAPIController@store');
 
         });

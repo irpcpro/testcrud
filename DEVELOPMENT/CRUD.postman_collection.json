@@ -263,7 +263,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"orders\": [\r\n        {\r\n            \"product_id\": \"6657648a13e0daa072009d90\",\r\n            \"count\": 1\r\n            \r\n        }, \r\n        {\r\n            \"product_id\": \"6657648c13e0daa072009d92\",\r\n            \"count\": 1\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"orders\": [\r\n        {\r\n            \"product_id\": \"6659e31ed6ed91b193052bab\",\r\n            \"count\": 2\r\n            \r\n        }, \r\n        {\r\n            \"product_id\": \"665a0237d6ed91b193052baf\",\r\n            \"count\": 2\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -271,6 +271,32 @@
 							}
 						},
 						"url": "{{base_url}}/api/v1/order/store"
+					},
+					"response": []
+				},
+				{
+					"name": "All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/api/v1/order"
 					},
 					"response": []
 				}

@@ -11,6 +11,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use MongoDB\Laravel\Relations\HasMany;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends ModelConfig implements
@@ -60,4 +61,9 @@ class User extends ModelConfig implements
     public function getJWTCustomClaims(){
         return [];
     }
+
+    public function orders(): HasMany {
+        return $this->hasMany(Order::class);
+    }
+
 }
