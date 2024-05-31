@@ -5,6 +5,8 @@ namespace App\Models;
 
 use Illuminate\Support\Collection;
 use MongoDB\Laravel\Relations\BelongsTo;
+use MongoDB\Laravel\Relations\BelongsToMany;
+use MongoDB\Laravel\Relations\HasMany;
 
 class Order extends ModelConfig {
 
@@ -18,6 +20,9 @@ class Order extends ModelConfig {
         return $this->belongsTo(User::class);
     }
 
+    public function orderProducts(): HasMany {
+        return $this->hasMany(OrderProduct::class);
+    }
 
     // Sync the data
     public function syncOrderProducts(Collection $data) {
@@ -26,7 +31,6 @@ class Order extends ModelConfig {
             'order_id' => $this->id,
             'product_id' => $key,
             ...$item,
-            'price' => 500,
         ]);
 
 
