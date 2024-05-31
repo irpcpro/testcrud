@@ -22,6 +22,7 @@ class OrderStoreFactoryController extends Controller {
      * @var int $count
      */
     private Collection $orders;
+
     /** @var OrderStoreFailedResource[] $errorCountOrders */
     private array $errorCountOrders = [];
 
@@ -64,6 +65,14 @@ class OrderStoreFactoryController extends Controller {
         return $this->orders->sum('count');
     }
 
+    private function updateInventoryOfProducts(){
+        $this->orders->each(function($item) {
+            $product = $item['product'];
+            $newInventory = $product->inventory - $item['count'];
+            $product->update(['inventory' => $newInventory]);
+        });
+    }
+
     private function createOrderProductsList(): Collection {
         return $this->orders->mapWithKeys(function($item) {
             return [
@@ -103,42 +112,14 @@ class OrderStoreFactoryController extends Controller {
                 'total_price' => $orderTotalPrice,
             ]);
 
-//            Order::all()->map(fn($item)=>$item->delete()); dd(2);
-
-            $w = [
-                "6657648a13e0daa072009d90" => [
-                    "count" => 8,
-                    "price" => 20000
-                ],
-                "6657648c13e0daa072009d92" => [
-                    "count" => 10,
-                    "price" => 20000
-                ]
-            ];
-
             // get data and sync the orderProducts
             $orderProducts = $this->createOrderProductsList();
 
+            // sync the order products
+            $order->syncOrderProducts($orderProducts);
 
-
-//            $order->products()->attach('6657648a13e0daa072009d90', ['count' => 10, 'price' => 20000], false);
-            $order->orderProducts($orderProducts);
-//            $order->products()->attach('6657648c13e0daa072009d92', ['count' => 5, 'price' => 20000], false);
-
-//            dd($orderProducts->keys()->toArray(), $orderProducts->values()->toArray());
-//            $res = $order->products()->sync($orderProducts->toArray());
-
-
-
-            dd('ok');
-
-
-            /*
-             * TODO - Place the order
-             * inset the orders [make order & product relation  -  an order =>( can have )=> n product !]
-             * update the inventories
-             *
-             * */
+            // update the inventory of products
+            $this->updateInventoryOfProducts();
 
             // ready data and return
             $response->setData($order)->setStatus(true)->setMessage('orders have created.');
