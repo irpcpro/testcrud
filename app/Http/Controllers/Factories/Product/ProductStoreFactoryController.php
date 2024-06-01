@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Factories\Product;
 
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\Factories\FactoryConnector;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class ProductStoreFactoryController extends Controller {
+class ProductStoreFactoryController extends ProductFactoryController {
 
     public function __construct(
         private Request $request

@@ -2,30 +2,39 @@
 
 namespace App\Http\Controllers\Factories\Product;
 
+use App\Enums\ProductInventoryActionEnum;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Factories\FactoryConnector;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
 class ProductFactoryController extends Controller {
 
-    public function __construct(
-        private Request $request
-    ){
-    }
+    /**
+     * Update inventory of product
+     *
+     * @param mixed $product
+     * @param int $count
+     * @param ProductInventoryActionEnum $type ('increase' or 'decrease').
+     *
+     * @return void
+     */
+    public static function updateInventory(mixed $product, int $count, ProductInventoryActionEnum $type){
+        if(!($product instanceof Product)){
+            $productIDKey = (new Product())->getKeyName();
+            $product = Product::where($productIDKey,$product)->first();
+        }
 
-    public function index(int $paginate = 10){
-        // factory connector
-        $response = new FactoryConnector();
+//        dd($product->inventory);
 
-        // get products
-        $products = Product::simplePaginate($paginate);
+        switch ($type) {
+            case ProductInventoryActionEnum::DECREASE:
+                $product->inventory -= $count;
+                break;
+            case ProductInventoryActionEnum::INCREASE:
+                $product->inventory += $count;
+                break;
+        }
 
-        // return result
-        $response->setStatus(true);
-        $response->setMessage('products received.');
-        $response->setData($products);
-        return $response;
+        $product->save();
     }
 
 }

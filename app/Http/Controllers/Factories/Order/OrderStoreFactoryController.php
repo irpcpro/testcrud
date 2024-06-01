@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers\Factories\Order;
 
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\Factories\FactoryConnector;
 use App\Http\Requests\API\V1\Order\OrderStoreAPIRequest;
 use App\Http\Resources\V1\Order\OrderStoreFailedResource;
 use App\Models\Order;
-use App\Models\OrderProduct;
 use App\Models\Product;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class OrderStoreFactoryController extends Controller {
+class OrderStoreFactoryController extends OrderFactoryController {
 
 
     /**
@@ -65,20 +62,13 @@ class OrderStoreFactoryController extends Controller {
         return $this->orders->sum('count');
     }
 
-    private function updateInventoryOfProducts(){
-        $this->orders->each(function($item) {
-            $product = $item['product'];
-            $newInventory = $product->inventory - $item['count'];
-            $product->update(['inventory' => $newInventory]);
-        });
-    }
-
     private function createOrderProductsList(): Collection {
         return $this->orders->mapWithKeys(function($item) {
             return [
                 $item['product']->id => [
                     'count' => $item['count'],
                     'price' => $item['product']->price,
+                    'product' => $item['product'],
                 ]
             ];
         });
@@ -117,9 +107,6 @@ class OrderStoreFactoryController extends Controller {
 
             // sync the order products
             $order->syncOrderProducts($orderProducts);
-
-            // update the inventory of products
-            $this->updateInventoryOfProducts();
 
             // ready data and return
             $response->setData($order)->setStatus(true)->setMessage('orders have created.');

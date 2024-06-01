@@ -15,6 +15,7 @@ class ProductCollection extends ResourceCollection  {
                 'name' => $item->name,
                 'price' => $item->price,
                 'created_at' => $item->created_at,
+                'inventory' => $item->inventory,
                 'user' => new UserResource($item->user)
             ];
         });

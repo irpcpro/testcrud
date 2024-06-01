@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Factories\Product;
 
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\Factories\FactoryConnector;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class ProductUpdateFactoryController extends Controller {
+class ProductUpdateFactoryController extends ProductFactoryController {
 
 
     public function __construct(

@@ -4,25 +4,29 @@ namespace App\Http\Controllers\Factories\Product;
 
 use App\Http\Controllers\Factories\FactoryConnector;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
-class ProductShowFactoryController extends ProductFactoryController {
+class ProductAllFactoryController extends ProductFactoryController {
 
     public function __construct(
-        private Product $product
+        private Request $request
     ){
     }
 
-    public function show(){
+    public function index(int $paginate = 10){
         // factory connector
         $response = new FactoryConnector();
 
-        // filter or do anything on product
-        $product = $this->product;
+        // get products
+        $products = Product::simplePaginate($paginate);
 
         // return result
         $response->setStatus(true);
-        $response->setMessage('product received.');
-        $response->setData($product);
+        $response->setMessage('products received.');
+        $response->setData($products);
         return $response;
     }
+
+
+
 }

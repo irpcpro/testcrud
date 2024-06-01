@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API\V1\Product;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Factories\Product\ProductFactoryController;
+use App\Http\Controllers\Factories\Product\ProductAllFactoryController;
 use App\Http\Controllers\Factories\ResponseFactory\ResponseFactoryController;
 use App\Http\Resources\PaginateResource;
 use App\Http\Resources\V1\Product\ProductCollection;
@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class ProductAPIController extends Controller {
 
     public function index(Request $request){
-        $products = (new ProductFactoryController($request))->index();
+        $products = (new ProductAllFactoryController($request))->index();
 
         // set response data
         $response = new ResponseFactoryController($products->getStatus(), $products->getMessage(), $products->getData());
