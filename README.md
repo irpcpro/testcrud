@@ -187,7 +187,7 @@ extension=redis
 
 - there are the Postman Collection and Environment for importing.
 - collections are available on `DEVELOPMENT` folder
-- `[Collection](./DEVELOPMENT/CRUD.postman_collection.json)`
-- `[Environment](./DEVELOPMENT/CRUD.postman_environment.json)`
+- `Collection => DEVELOPMENT/CRUD.postman_collection.json`
+- `Environment => DEVELOPMENT/CRUD.postman_environment.json`
 
 
