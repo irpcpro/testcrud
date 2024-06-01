@@ -5,7 +5,7 @@
 
 <p>A project for managing `Products` & `Orders` with `JWT` authentication</p>
 
-<h2>Installation</h2>
+<h2>+ Installation</h2>
 
 Install this project via Composer:
 
@@ -13,7 +13,7 @@ Install this project via Composer:
 composer create-project irpcpro/testcrud
 ```
 
-<h2>Requirements</h2>
+<h2>+ Requirements</h2>
 
 - PHP: `^8.1`
 - mongodb/laravel-mongodb: `^4.3`
@@ -21,7 +21,7 @@ composer create-project irpcpro/testcrud
 - Redis Driver (windows): `v4.2.1`
 - MongoDB (windows): `7.2.5`
 
-<h2>MongoDB Installation & Configuration</h2>
+<h2>+ MongoDB Installation & Configuration</h2>
 
 <h3>installing MongoDB</h3>
 
@@ -183,7 +183,7 @@ extension=redis
 - `CACHE_DRIVER=redis`
 
 
-<h3>Postman Collection & Environment</h3>
+<h2>+ Postman Collection & Environment</h2>
 
 - there are the Postman Collection and Environment for importing.
 - collections are available on `DEVELOPMENT` folder
