@@ -52,17 +52,22 @@ composer create-project irpcpro/testcrud
 <ul>
     <li>in the part of the `Dynamic Extensions` (you can search it) add this command and save the file and restart your PHP server</li>
 </ul>
+
 ```
 ..
 ..
 extension=mongodb
 ```
+<ul>
+    <ii>you can check in the terminal to see if it is installed. open your CommandPrompt and run this command :</ii>
+</ul>
 
-- <p>you can check in the terminal to see if it is installed. open your CommandPrompt and run this command :</p>
-- `php -m | find "mongo"`
-- <p>the output should be `mongodb`</p>
-- <p>or just execute this code via PHP :</p>
-- `<?php echo phpinfo(); ?>`
+`php -m | find "mongo"`
+<ul>
+    <li>the output should be `mongodb`</li>
+    <li>or just execute this code via PHP :</li>
+</ul>
+`<?php echo phpinfo(); ?>`
 
 
 <h3>config Replica Set and run the database</h3>
