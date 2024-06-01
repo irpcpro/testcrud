@@ -183,13 +183,11 @@ taskkill /pid 13936 /f
 ..
 extension=redis
 ```
-<ul>
-    <li>you can check in the terminal to see if it is installed. open your CommandPrompt and run this command :</li>
-    <li>`php -m | find "redis"`</li>
-    <li>the output should be `redis`</li> 
-    <li>or just execute this code via PHP :</li>
-    <li>`<?php echo phpinfo(); ?>`</li>
-</ul>
+- you can check in the terminal to see if it is installed. open your CommandPrompt and run this command :
+- `php -m | find "redis"`
+- the output should be `redis` 
+- or just execute this code via PHP :
+- `<?php echo phpinfo(); ?>`
 
 
 <h3>changing the cache driver</h3>
