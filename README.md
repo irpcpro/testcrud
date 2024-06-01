@@ -37,9 +37,13 @@ composer create-project irpcpro/testcrud
 <ul>
     <li>1- go to your PHP folders where you've intsalled. (for finding the path of the PHP file, execute this command on CommandPrompt: `where php`)</li>
     <li>go to this path and copy the `php_mongodb.dll`</li>
-```{drive}:\php\php-{version}\ext```
+```
+{drive}:\php\php-{version}\ext
+```
     <li>next step, you have to add the extension name to `php.ini` file. go to this path and open the `php.ini` file with `notepad`:</li>
-```{drive}:\php\php-{version}\```
+```
+{drive}:\php\php-{version}\
+```
     <li>in the part of the `Dynamic Extensions` (you can search it) add this command and save the file and restart your PHP server</li>
 </ul>
 ```
