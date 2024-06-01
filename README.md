@@ -20,9 +20,11 @@ composer create-project irpcpro/testcrud
 </ul>
 
 <h2>MongoDB Installation & Configuration</h2>
-<h3>1- installing MongoDB</h3>
-- <p>first you need to install the `MongoDB 7.2.5` for windows.</p>
-- <p>after installing, you have to insert your DB connection to the `.env` file. to connect the project to the database.</p>
+<h3>installing MongoDB</h3>
+<ul>
+    <li>first you need to install the `MongoDB 7.2.5` for windows.</li>
+    <li>after installing, you have to insert your DB connection to the `.env` file. to connect the project to the database.</li>
+</ul>
 
 <h3>Download MongoDB Extension `.dll` file</h3>
 - <p>next step, you have to install the Ext of the MongoDB for PHP and enable it through the `php.ini` file.</p>
