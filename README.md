@@ -101,8 +101,11 @@ mongo
 ```
 
 <h3>Debugging</h3>
-- <p>if you have a problem for running Replica Set and you face a problem like this :</p>
-```
+<ul>
+    <li>if you have a problem for running Replica Set and you face a problem like this :</li>
+</ul>
+
+```composer log
 > rs.initiate()
 {
         "ok" : 0,
