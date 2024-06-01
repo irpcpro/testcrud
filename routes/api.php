@@ -27,8 +27,8 @@ Route::prefix('v1')->namespace('V1')->group(function () {
             Route::get('/', 'OrderAPIController@index');
             Route::post('/store', 'OrderStoreAPIController@store');
             Route::put('/{order}', 'OrderUpdateAPIController@update');
+            Route::get('/{order}', 'OrderShowAPIController@show');
             Route::delete('/{order}', 'OrderDeleteAPIController@delete');
-
         });
     });
 
