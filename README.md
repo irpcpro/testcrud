@@ -1,11 +1,14 @@
 <h1>Test CRUD</h1>
+
 **Version:**
 <span>1.0.0</span>
 
 <p>A project for managing `Products` & `Orders` with `JWT` authentication</p>
 
 <h2>Installation</h2>
+
 Install this project via Composer:
+
 ```
 composer create-project irpcpro/testcrud
 ```
@@ -20,55 +23,49 @@ composer create-project irpcpro/testcrud
 </ul>
 
 <h2>MongoDB Installation & Configuration</h2>
+
 <h3>installing MongoDB</h3>
-<ul>
-    <li>first you need to install the `MongoDB 7.2.5` for windows.</li>
-    <li>after installing, you have to insert your DB connection to the `.env` file. to connect the project to the database.</li>
-</ul>
+
+- first you need to install the `MongoDB 7.2.5` for windows.
+- after installing, you have to insert your DB connection to the `.env` file. to connect the project to the database.
 
 <h3>Download MongoDB Extension `.dll` file</h3>
-<ul>
-    <li>next step, you have to install the Ext of the MongoDB for PHP and enable it through the `php.ini` file.</li>
-    <li>for downloading, go to the packages PHP official website, and base on your windows, download the version of the `.dll` which is compatible with your windows and the PHP version which is installed on your PC.</li>
-    <li>[MongoDB PHP Package (https://pecl.php.net/package/mongodb)](https://pecl.php.net/package/mongodb)</li>
-</ul>
+
+- next step, you have to install the Ext of the MongoDB for PHP and enable it through the `php.ini` file.
+- for downloading, go to the packages PHP official website, and base on your windows, download the version of the `.dll` which is compatible with your windows and the PHP version which is installed on your PC.
+- [MongoDB PHP Package (https://pecl.php.net/package/mongodb)](https://pecl.php.net/package/mongodb)
 
 <h3>Install the extension</h3>
-<ul>
-    <li>1- go to your PHP folders where you've installed. (for finding the path of the PHP file, execute this command on CommandPrompt: `where php`)</li>
-    <li>go to this path and copy the `php_mongodb.dll`</li>
-</ul>
+
+- 1- go to your PHP folders where you've installed. (for finding the path of the PHP file, execute this command on CommandPrompt: `where php`)
+- go to this path and copy the `php_mongodb.dll`
 
 ```
 {drive}:\php\php-{version}\ext
 ```
-<ul>
-    <li>next step, you have to add the extension name to `php.ini` file. go to this path and open the `php.ini` file with `notepad`:</li>
-</ul>
+
+- next step, you have to add the extension name to `php.ini` file. go to this path and open the `php.ini` file with `notepad`:
 
 ```
 {drive}:\php\php-{version}\
 ```
-<ul>
-    <li>in the part of the `Dynamic Extensions` (you can search it) add this command and save the file and restart your PHP server</li>
-</ul>
+
+- in the part of the `Dynamic Extensions` (you can search it) add this command and save the file and restart your PHP server
 
 ```
 ..
 ..
 extension=mongodb
 ```
-<ul>
-    <ii>you can check in the terminal to see if it is installed. open your CommandPrompt and run this command :</ii>
-</ul>
+
+- you can check in the terminal to see if it is installed. open your CommandPrompt and run this command :
 
 ```
 > php -m | find "mongo"
 ```
-<ul>
-    <li>the output should be `mongodb`</li>
-    <li>or just execute this code via PHP :</li>
-</ul>
+
+- the output should be `mongodb`
+- or just execute this code via PHP :
 
 ```phpt
 <?php echo phpinfo(); ?>
@@ -76,23 +73,20 @@ extension=mongodb
 
 
 <h3>config Replica Set and run the database</h3>
-<ul>
-    <li>first open the `CommandPrompt` as administrator and run this command to start the Replica Set</li>
-</ul>
+
+- first open the `CommandPrompt` as administrator and run this command to start the Replica Set
 
 ```
 mongod --dbpath "C:\data\db" --logpath "C:\data\log\mongod.log" --replSet "rs0"
 ```
-<ul>
-    <li>now, open another `CommandPrompt` as administrator and run this command to enter to the MongoDB environment</li>
-</ul>
+
+- now, open another `CommandPrompt` as administrator and run this command to enter to the MongoDB environment
 
 ```
 mongo
 ```
-<ul>
-    <li>now you can initiate the Replica and see the status of this with these two commands:</li>
-</ul>
+
+- now you can initiate the Replica and see the status of this with these two commands:
 
 ```
 > rs.initiate()
@@ -101,9 +95,8 @@ mongo
 ```
 
 <h3>Debugging</h3>
-<ul>
-    <li>if you have a problem for running Replica Set and you face a problem like this :</li>
-</ul>
+
+- if you have a problem for running Replica Set and you face a problem like this :
 
 ```composer log
 > rs.initiate()
@@ -114,28 +107,26 @@ mongo
         "codeName" : "NoReplicationEnabled"
 }
 ```
-<ul>
-    <li>it's because you're port of the MongoDB is reserved. and you have to stop the process which is run on the port of `27017`</li>
-</ul>
+
+- it's because you're port of the MongoDB is reserved. and you have to stop the process which is run on the port of `27017`
 
 <h3>Killing the port</h3>
-<ul>
-    <li>1- Open the `CommandPrompt` as administrator.</li> TODO
-    <li>2- run this command: `> netstat -aon | find "27017"`.</li>
-    <li>3- then you see something like this :</li>
-</ul>
+
+- 1- Open the `CommandPrompt` as administrator.
+- 2- run this command: `> netstat -aon | find "27017"`.
+- 3- then you see something like this :
 
 ```
 TCP   127.0.0.1:27017   0.0.0.0:0   LISTENING   13936
 ```
-<ul>
-    <li>4- the `13936` is the `PID` that you have to kill it.</li> TODO
-    <li>5- next step, run this command to abort this process:</li>
-</ul>
+
+- 4- the `13936` is the `PID` that you have to kill it.
+- 5- next step, run this command to abort this process:
 
 ```
 taskkill /pid {PID} /f
 ```
+
 like :
 
 ```
@@ -143,19 +134,18 @@ taskkill /pid 13936 /f
 ```
 
 <h2>Redis Installation & Configuration</h2>
+
 <h3>Installing Redis</h3>
-<ul>
-    <li>installing Redis v4.2.1 for windows. you can download the release version from the Redis Github</li> TODO
-    <li>[Redis GitHub (https://github.com/redis-windows/redis-windows)](https://github.com/redis-windows/redis-windows)</li>
-    <li>after downloading, you have to run 2 service. first run the `redis-server.exe` and next run the `redis-cli.exe`</li>
-    <li>your redis driver is running</li>
-</ul>
+
+- installing Redis v4.2.1 for windows. you can download the release version from the Redis Github
+- [Redis GitHub (https://github.com/redis-windows/redis-windows)](https://github.com/redis-windows/redis-windows)
+- after downloading, you have to run 2 service. first run the `redis-server.exe` and next run the `redis-cli.exe`
+- your redis driver is running
 
 <h3>Install Redis PHP Extension</h3>
-<ul>
-    <li>for downloading, go to the packages PHP official website, and base on your windows, download the version of the `.dll` which is compatible with your windows and the PHP version which is installed on your PC.</li>
-<li>[Redis PHP Package (https://pecl.php.net/package/redis)](https://pecl.php.net/package/redis)</li>
-</ul>
+
+- for downloading, go to the packages PHP official website, and base on your windows, download the version of the `.dll` which is compatible with your windows and the PHP version which is installed on your PC.
+- [Redis PHP Package (https://pecl.php.net/package/redis)](https://pecl.php.net/package/redis)
 
 <h3>Install the extension</h3>
 
