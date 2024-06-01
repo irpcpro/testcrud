@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Factories\Order;
 use App\Http\Controllers\Factories\FactoryConnector;
 use App\Http\Requests\API\V1\Order\OrderStoreAPIRequest;
 use App\Models\Order;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class OrderStoreFactoryController extends OrderFactoryController {
@@ -23,6 +24,10 @@ class OrderStoreFactoryController extends OrderFactoryController {
         $response->setStatus(false)->setMessage('')->setData('');
 
 //        DB::beginTransaction(); // TODO - db transaction
+        $client = DB::getMongoClient();
+        $session = $client->startSession();
+
+        $session->startTransaction();
         try {
             // validations
             $this->validateCountOrders();
@@ -51,13 +56,18 @@ class OrderStoreFactoryController extends OrderFactoryController {
             // ready data and return
             $response->setData($order)->setStatus(true)->setMessage('orders have created.');
 //            DB::commit();
+//            $session->commitTransaction();
+            $session->abortTransaction();
             return $response;
         }catch (\Exception $exception){
 //            DB::rollBack();
+            $session->abortTransaction();
             // set data to pass through the system
             $response->setMessage('error on store order.')->setData('')->setStatus(false);
             Log::error('error on storing order', [$exception->getMessage()]);
             return $response;
+        } finally {
+            $session->endSession();
         }
     }
 
