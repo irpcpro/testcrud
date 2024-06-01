@@ -1,6 +1,3 @@
-- replica set
-
-+ redis
 + test
 + readme
 
@@ -14,6 +11,18 @@ $ mongo
 $ rs.initiate()
 
 
+install mongodb =
+php.ini
+add ext file (https://pecl.php.net/package/mongodb)
+add ext line
+
+
+install redis = php.ini
+redis windows (https://github.com/redis-windows/redis-windows)
+redis php ext (https://pecl.php.net/package/redis)
+
+redis =
+copy file "redis"
 
 
 
