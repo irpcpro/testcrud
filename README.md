@@ -62,13 +62,17 @@ extension=mongodb
     <ii>you can check in the terminal to see if it is installed. open your CommandPrompt and run this command :</ii>
 </ul>
 
-`php -m | find "mongo"`
+```
+> php -m | find "mongo"
+```
 <ul>
     <li>the output should be `mongodb`</li>
     <li>or just execute this code via PHP :</li>
 </ul>
 
-`<?php echo phpinfo(); ?>`
+```phpt
+<?php echo phpinfo(); ?>
+```
 
 
 <h3>config Replica Set and run the database</h3>
