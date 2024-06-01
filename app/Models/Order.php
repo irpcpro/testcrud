@@ -7,7 +7,6 @@ use App\Enums\ProductInventoryActionEnum;
 use App\Http\Controllers\Factories\Product\ProductFactoryController;
 use Illuminate\Support\Collection;
 use MongoDB\Laravel\Relations\BelongsTo;
-use MongoDB\Laravel\Relations\BelongsToMany;
 use MongoDB\Laravel\Relations\HasMany;
 
 class Order extends ModelConfig {
@@ -29,7 +28,6 @@ class Order extends ModelConfig {
 
     private function decreaseProductInventory($data){
         foreach ($data as $item)
-//            dd($item['product']);
             ProductFactoryController::updateInventory($item['product'], $item['count'], ProductInventoryActionEnum::DECREASE);
     }
 
@@ -66,31 +64,12 @@ class Order extends ModelConfig {
             ...$item,
         ]);
 
-
-        // TODO - remove
-        $data = collect([
-//            "66573ebc263338de33071837" => ["order_id" => "665ad757263338de330718cb", "product_id" => "66573ebc263338de33071837", "count" => 5, "price" => 100, 'product' => Product::where('_id', '66573ebc263338de33071837')->first()],
-//             "66573f9d263338de33071838" => ["order_id" => "665ad757263338de330718cb", "product_id" => "66573f9d263338de33071838", "count" => 5, "price" => 200, 'product' => Product::where('_id', '66573f9d263338de33071838')->first()],
-//            "66573fd6263338de33071839" => ["order_id" => "665ad757263338de330718cb", "product_id" => "66573fd6263338de33071839", "count" => 5, "price" => 300, 'product' => Product::where('_id', '66573fd6263338de33071839')->first()],
-//            "66573fe9263338de3307183a" => ["order_id" => "665ad757263338de330718cb", "product_id" => "66573fe9263338de3307183a", "count" => 5, "price" => 400, 'product' => Product::where('_id', '66573fe9263338de3307183a')->first()],
-        ]);
-
-        // collect IDs to get orderProducts
-//        $orderIds = $data->pluck('order_id')->unique()->toArray();
-        $orderIds = '665ad757263338de330718cb'; // TODO - remove
         // get the OrderProducts
-//        $existingRecords = OrderProduct::where('order_id', $this->id)->get();
         $existingRecords = OrderProduct::where('order_id', $this->id)->get();
-
 
         // create if no data exists
         if($existingRecords->isEmpty()){
-
-//            $insertData = $data->values()->toArray();
-//            OrderProduct::insert($insertData);
-//            $this->decreaseProductInventory($data);
             $this->insertOrderProducts($data);
-
             return $data;
         }else{
             // update existing data
@@ -114,12 +93,8 @@ class Order extends ModelConfig {
                 $this->deleteExistingOrderProduct($bulkDeleteData);
 
             // insert new data
-            if(!empty($data)){
-
-//                dd('here', $data);
-//                OrderProduct::insert($data->values()->toArray());
+            if(!empty($data))
                 $this->insertOrderProducts($data);
-            }
 
             // return last data
             return $data;

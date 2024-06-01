@@ -23,8 +23,6 @@ class ProductFactoryController extends Controller {
             $product = Product::where($productIDKey,$product)->first();
         }
 
-//        dd($product->inventory);
-
         switch ($type) {
             case ProductInventoryActionEnum::DECREASE:
                 $product->inventory -= $count;
