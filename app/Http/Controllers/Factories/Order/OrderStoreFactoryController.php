@@ -22,7 +22,7 @@ class OrderStoreFactoryController extends OrderFactoryController {
         $response = new FactoryConnector();
         $response->setStatus(false)->setMessage('')->setData('');
 
-//        DB::beginTransaction();
+//        DB::beginTransaction(); // TODO - db transaction
         try {
             // validations
             $this->validateCountOrders();
