@@ -145,23 +145,39 @@ taskkill /pid 13936 /f
 <h2>Redis Installation & Configuration</h2>
 <h3>Installing Redis</h3>
 <ul>
-    <li>installing Redis v4.2.1 for windows. you can download the release version from the Redis Github</li>
+    <li>installing Redis v4.2.1 for windows. you can download the release version from the Redis Github</li> TODO
     <li>[Redis GitHub (https://github.com/redis-windows/redis-windows)](https://github.com/redis-windows/redis-windows)</li>
     <li>after downloading, you have to run 2 service. first run the `redis-server.exe` and next run the `redis-cli.exe`</li>
     <li>your redis driver is running</li>
 </ul>
 
 <h3>Install Redis PHP Extension</h3>
-- <p>for downloading, go to the packages PHP official website, and base on your windows, download the version of the `.dll` which is compatible with your windows and the PHP version which is installed on your PC.</p>
-- [Redis PHP Package (https://pecl.php.net/package/redis)](https://pecl.php.net/package/redis)
+<ul>
+    <li>for downloading, go to the packages PHP official website, and base on your windows, download the version of the `.dll` which is compatible with your windows and the PHP version which is installed on your PC.</li>
+<li>[Redis PHP Package (https://pecl.php.net/package/redis)](https://pecl.php.net/package/redis)</li>
+</ul>
 
 <h3>Install the extension</h3>
-- <p>1- go to your PHP folders where you've intsalled. (for finding the path of the PHP file, execute this command on CommandPrompt: `where php`)</p>
-- <p>go to this path and copy the `php_redis.dll`</p>
-```{drive}:\php\php-{version}\ext```
-- <p>next step, you have to add the extension name to `php.ini` file. go to this path and open the `php.ini` file with `notepad`:</p>
-```{drive}:\php\php-{version}\```
-- <p>in the part of the `Dynamic Extensions` (you can search it) add this command and save the file and restart your PHP server</p>
+<ul>
+    <li>1- go to your PHP folders where you've intsalled. (for finding the path of the PHP file, execute this command on CommandPrompt: `where php`)</li>
+    <li>go to this path and copy the `php_redis.dll`</li>
+</ul>
+
+```
+{drive}:\php\php-{version}\ext
+```
+
+<ul>
+    <li>next step, you have to add the extension name to `php.ini` file. go to this path and open the `php.ini` file with `notepad`:</li>
+</ul>
+
+```
+{drive}:\php\php-{version}\
+```
+<ul>
+    <li>in the part of the `Dynamic Extensions` (you can search it) add this command and save the file and restart your PHP server</li>
+</ul>
+
 ```
 ..
 ..
