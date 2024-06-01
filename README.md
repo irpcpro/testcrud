@@ -14,13 +14,12 @@ composer create-project irpcpro/testcrud
 ```
 
 <h2>Requirements</h2>
-<ul>
-    <li>PHP: `^8.1`</li> TODO
-    <li>mongodb/laravel-mongodb: `^4.3`</li>
-    <li>tymon/jwt-auth: `^2.1`</li>
-    <li>Redis Driver (windows): `v4.2.1`</li>
-    <li>MongoDB (windows): `7.2.5`</li>
-</ul>
+
+- PHP: `^8.1`
+- mongodb/laravel-mongodb: `^4.3`
+- tymon/jwt-auth: `^2.1`
+- Redis Driver (windows): `v4.2.1`
+- MongoDB (windows): `7.2.5`
 
 <h2>MongoDB Installation & Configuration</h2>
 
