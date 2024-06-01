@@ -198,9 +198,9 @@ extension=redis
 
 
 <h3>Postman Collection & Environment</h3>
-- there are the Postman Collection and Environment for importing.
-- collections are available on `DEVELOPMENT` folder
-- [Collection](./DEVELOPMENT/CRUD.postman_collection.json)
-- [Environment](./DEVELOPMENT/CRUD.postman_environment.json)
+- <p>there are the Postman Collection and Environment for importing.</p>
+- <p>collections are available on `DEVELOPMENT` folder</p>
+- `[Collection](./DEVELOPMENT/CRUD.postman_collection.json)`
+- `[Environment](./DEVELOPMENT/CRUD.postman_environment.json)`
 
 
