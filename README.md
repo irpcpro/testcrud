@@ -58,7 +58,6 @@ composer create-project irpcpro/testcrud
 ..
 extension=mongodb
 ```
-
 <ul>
     <ii>you can check in the terminal to see if it is installed. open your CommandPrompt and run this command :</ii>
 </ul>
@@ -68,20 +67,29 @@ extension=mongodb
     <li>the output should be `mongodb`</li>
     <li>or just execute this code via PHP :</li>
 </ul>
+
 `<?php echo phpinfo(); ?>`
 
 
 <h3>config Replica Set and run the database</h3>
-- <p>first open the `CommandPrompt` as administrator and run this command to start the Replica Set</p>
+<ul>
+    <li>first open the `CommandPrompt` as administrator and run this command to start the Replica Set</li>
+</ul>
 
 ```
 mongod --dbpath "C:\data\db" --logpath "C:\data\log\mongod.log" --replSet "rs0"
 ```
-- <p>now, open another `CommandPrompt` as administrator and run this command to enter to the MongoDB environment</p>
+<ul>
+    <li>now, open another `CommandPrompt` as administrator and run this command to enter to the MongoDB environment</li>
+</ul>
+
 ```
 mongo
 ```
-- <p>now you can initiate the Replica and see the status of this with these two commands:</p>
+<ul>
+    <li>now you can initiate the Replica and see the status of this with these two commands:</li>
+</ul>
+
 ```
 > rs.initiate()
 
