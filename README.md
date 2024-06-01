@@ -158,25 +158,21 @@ taskkill /pid 13936 /f
 </ul>
 
 <h3>Install the extension</h3>
-<ul>
-    <li>1- go to your PHP folders where you've intsalled. (for finding the path of the PHP file, execute this command on CommandPrompt: `where php`)</li>
-    <li>go to this path and copy the `php_redis.dll`</li>
-</ul>
+
+- 1- go to your PHP folders where you've intsalled. (for finding the path of the PHP file, execute this command on CommandPrompt: `where php`)
+- go to this path and copy the `php_redis.dll`
 
 ```
 {drive}:\php\php-{version}\ext
 ```
 
-<ul>
-    <li>next step, you have to add the extension name to `php.ini` file. go to this path and open the `php.ini` file with `notepad`:</li>
-</ul>
+- next step, you have to add the extension name to `php.ini` file. go to this path and open the `php.ini` file with `notepad`:
 
 ```
 {drive}:\php\php-{version}\
 ```
-<ul>
-    <li>in the part of the `Dynamic Extensions` (you can search it) add this command and save the file and restart your PHP server</li>
-</ul>
+
+- in the part of the `Dynamic Extensions` (you can search it) add this command and save the file and restart your PHP server`
 
 ```
 ..
@@ -191,9 +187,10 @@ extension=redis
 
 
 <h3>changing the cache driver</h3>
-- <p>for chaning the `Cache Driver` of the project, if you don't have Redis Driver on your system, open the `.env` file and change the `CACHE_DRIVER` to `file` like this :</p>
+
+- for chaning the `Cache Driver` of the project, if you don't have Redis Driver on your system, open the `.env` file and change the `CACHE_DRIVER` to `file` like this :
 - `CACHE_DRIVER=file`
-- <p>also you can set it with Redis</p>
+- also you can set it with Redis
 - `CACHE_DRIVER=redis`
 
 
