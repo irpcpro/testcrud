@@ -28,7 +28,7 @@ composer create-project irpcpro/testcrud
 - first you need to install the `MongoDB 7.2.5` for windows.
 - after installing, you have to insert your DB connection to the `.env` file. to connect the project to the database.
 
-<h3>Download MongoDB Extension `.dll` file</h3>
+<h3>Download MongoDB Extension .dll file</h3>
 
 - next step, you have to install the Ext of the MongoDB for PHP and enable it through the `php.ini` file.
 - for downloading, go to the packages PHP official website, and base on your windows, download the version of the `.dll` which is compatible with your windows and the PHP version which is installed on your PC.
@@ -132,7 +132,7 @@ like :
 taskkill /pid 13936 /f
 ```
 
-<h2>Redis Installation & Configuration</h2>
+<h2>+ Redis Installation & Configuration</h2>
 
 <h3>Installing Redis</h3>
 
