@@ -114,14 +114,16 @@ mongo
         "codeName" : "NoReplicationEnabled"
 }
 ```
-- <p>it's because you're port of the MongoDB is reserved. and you have to stop the process which is run on the port of `27017`</p>
+<ul>
+    <li>it's because you're port of the MongoDB is reserved. and you have to stop the process which is run on the port of `27017`</li>
+</ul>
 
 <h3>Killing the port</h3>
-<p>
-1- Open the `CommandPrompt` as administrator<br/>
-2- run this command: `> netstat -aon | find "27017"`<br/>
-3- then you see something like this :
-</p>
+<ol>
+    <li>Open the `CommandPrompt` as administrator.</li>
+    <li>run this command: `> netstat -aon | find "27017"`.</li>
+    <li>then you see something like this :</li>
+</ol>
 
 ```
 TCP   127.0.0.1:27017   0.0.0.0:0   LISTENING   13936
