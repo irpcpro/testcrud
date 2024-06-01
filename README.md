@@ -12,7 +12,7 @@ composer create-project irpcpro/testcrud
 
 <h2>Requirements</h2>
 <ul>
-    <li>PHP: `^8.1`</li>
+    <li>PHP: `^8.1`</li> TODO
     <li>mongodb/laravel-mongodb: `^4.3`</li>
     <li>tymon/jwt-auth: `^2.1`</li>
     <li>Redis Driver (windows): `v4.2.1`</li>
@@ -119,36 +119,37 @@ mongo
 </ul>
 
 <h3>Killing the port</h3>
-<ol>
-    <li>Open the `CommandPrompt` as administrator.</li>
-    <li>run this command: `> netstat -aon | find "27017"`.</li>
-    <li>then you see something like this :</li>
-</ol>
+<ul>
+    <li>1- Open the `CommandPrompt` as administrator.</li> TODO
+    <li>2- run this command: `> netstat -aon | find "27017"`.</li>
+    <li>3- then you see something like this :</li>
+</ul>
 
 ```
 TCP   127.0.0.1:27017   0.0.0.0:0   LISTENING   13936
 ```
-<p>
-4- the `13936` is the `PID` that you have to kill it.
-5- next step, run this command to abort this process:
-</p>
+<ul>
+    <li>4- the `13936` is the `PID` that you have to kill it.</li> TODO
+    <li>5- next step, run this command to abort this process:</li>
+</ul>
 
 ```
 taskkill /pid {PID} /f
 ```
-
 like :
+
 ```
 taskkill /pid 13936 /f
 ```
 
-
 <h2>Redis Installation & Configuration</h2>
 <h3>Installing Redis</h3>
-- <p>installing Redis v4.2.1 for windows. you can download the release version from the Redis Github</p>
-- [Redis GitHub (https://github.com/redis-windows/redis-windows)](https://github.com/redis-windows/redis-windows)
-- <p>after downloading, you have to run 2 service. first run the `redis-server.exe` and next run the `redis-cli.exe`</p>
-- <p>your redis driver is running</p>
+<ul>
+    <li>installing Redis v4.2.1 for windows. you can download the release version from the Redis Github</li>
+    <li>[Redis GitHub (https://github.com/redis-windows/redis-windows)](https://github.com/redis-windows/redis-windows)</li>
+    <li>after downloading, you have to run 2 service. first run the `redis-server.exe` and next run the `redis-cli.exe`</li>
+    <li>your redis driver is running</li>
+</ul>
 
 <h3>Install Redis PHP Extension</h3>
 - <p>for downloading, go to the packages PHP official website, and base on your windows, download the version of the `.dll` which is compatible with your windows and the PHP version which is installed on your PC.</p>
