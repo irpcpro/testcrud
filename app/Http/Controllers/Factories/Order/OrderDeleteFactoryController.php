@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Factories\Order;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Factories\FactoryConnector;
 use App\Models\Order;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class OrderDeleteFactoryController extends Controller {
@@ -19,18 +20,21 @@ class OrderDeleteFactoryController extends Controller {
         $response = new FactoryConnector();
 
         // filter or do anything on order
-//        DB::beginTransaction(); // TODO - db transaction
+        $client = DB::getMongoClient();
+        $session = $client->startSession();
+        $session->startTransaction();
         try {
-
             $this->order->syncOrderProducts(collect([]));
             $delete = $this->order->delete();
 
-//            DB::commit();
+            $session->commitTransaction();
         }catch (\Exception $exception){
-//            DB::rollBack();
+            $session->abortTransaction();
             $response->setMessage('error on deleting order.')->setData('')->setStatus(false);
             Log::error('error on deleting order', [$exception->getMessage()]);
             return $response;
+        } finally {
+            $session->endSession();
         }
 
         // return result

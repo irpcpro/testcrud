@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\V1\Product;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Factories\Cache\CacheFactoryController;
 use App\Http\Controllers\Factories\Product\ProductUpdateFactoryController;
 use App\Http\Controllers\Factories\ResponseFactory\ResponseFactoryController;
 use App\Http\Requests\API\V1\Products\ProductUpdateAPIRequest;

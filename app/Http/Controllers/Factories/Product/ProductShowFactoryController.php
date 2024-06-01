@@ -25,4 +25,5 @@ class ProductShowFactoryController extends ProductFactoryController {
         $response->setData($product);
         return $response;
     }
+
 }
