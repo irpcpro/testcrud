@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "8bedb344-147c-488e-b2c1-75c4dda920be",
+		"_postman_id": "1ef0125c-2235-4771-a029-1eab42a0c1d9",
 		"name": "CRUD",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "4984709"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
@@ -263,7 +262,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"orders\": [\r\n        {\r\n            \"product_id\": \"6659e31ed6ed91b193052bab\",\r\n            \"count\": 2\r\n            \r\n        }, \r\n        {\r\n            \"product_id\": \"665a0237d6ed91b193052baf\",\r\n            \"count\": 2\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"orders\": [\r\n        {\r\n            \"product_id\": \"66573ebc263338de33071837\",\r\n            \"count\": 1\r\n            \r\n        }, \r\n        {\r\n            \"product_id\": \"66573f9d263338de33071838\",\r\n            \"count\": 1\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -297,6 +296,93 @@
 							}
 						],
 						"url": "{{base_url}}/api/v1/order"
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/api/v1/order/665b0a84263338de330719be"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/api/v1/order/665b01c1263338de330719bb"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orders\": [\r\n        {\r\n            \"product_id\": \"66573ebc263338de33071837\",\r\n            \"count\": 1\r\n            \r\n        }, \r\n        {\r\n            \"product_id\": \"66573f9d263338de33071838\",\r\n            \"count\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/v1/order/665b0a84263338de330719be"
 					},
 					"response": []
 				}
