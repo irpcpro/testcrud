@@ -1,7 +1,7 @@
 <h1>Test CRUD</h1>
 
 **Version:**
-<span>1.0.0</span>
+<span>1.0.1</span>
 
 A project for managing `Products` & `Orders` with `JWT` authentication
 

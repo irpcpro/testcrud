@@ -2,7 +2,8 @@
     "name": "irpcpro/testcrud",
     "type": "project",
     "description": "A project to management Products and Orders",
-    "keywords": ["laravel", "framework"],
+    "keywords": ["testcrud", "test"],
+    "version": "1.0.1",
     "license": "MIT",
     "require": {
         "php": "^8.1",
