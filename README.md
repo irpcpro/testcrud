@@ -5,6 +5,8 @@
 
 <p>A project for managing `Products` & `Orders` with `JWT` authentication</p>
 
+[![Latest Stable Version](http://poser.pugx.org/irpcpro/testcrud/v)](https://packagist.org/packages/irpcpro/testcrud) [![Total Downloads](http://poser.pugx.org/irpcpro/testcrud/downloads)](https://packagist.org/packages/irpcpro/testcrud) [![Latest Unstable Version](http://poser.pugx.org/irpcpro/testcrud/v/unstable)](https://packagist.org/packages/irpcpro/testcrud) [![License](http://poser.pugx.org/irpcpro/testcrud/license)](https://packagist.org/packages/irpcpro/testcrud) [![PHP Version Require](http://poser.pugx.org/irpcpro/testcrud/require/php)](https://packagist.org/packages/irpcpro/testcrud)
+
 <h2>+ Installation</h2>
 
 Install this project via Composer:
