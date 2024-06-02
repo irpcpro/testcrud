@@ -3,7 +3,7 @@
 **Version:**
 <span>1.0.0</span>
 
-<p>A project for managing `Products` & `Orders` with `JWT` authentication</p>
+A project for managing `Products` & `Orders` with `JWT` authentication
 
 [![Latest Stable Version](http://poser.pugx.org/irpcpro/testcrud/v)](https://packagist.org/packages/irpcpro/testcrud) [![Total Downloads](http://poser.pugx.org/irpcpro/testcrud/downloads)](https://packagist.org/packages/irpcpro/testcrud) [![Latest Unstable Version](http://poser.pugx.org/irpcpro/testcrud/v/unstable)](https://packagist.org/packages/irpcpro/testcrud) [![License](http://poser.pugx.org/irpcpro/testcrud/license)](https://packagist.org/packages/irpcpro/testcrud) [![PHP Version Require](http://poser.pugx.org/irpcpro/testcrud/require/php)](https://packagist.org/packages/irpcpro/testcrud)
 
